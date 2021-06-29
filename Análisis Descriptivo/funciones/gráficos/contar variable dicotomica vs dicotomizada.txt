@@ -1,0 +1,10 @@
+# Count of smokers vs age (<18 and >18)
+# Sex: Male - 1, Female - 0
+fig = plt.figure(figsize = (12.8, 6))
+
+ax = fig.subplots(1, 2)
+sns.countplot(x = 'smoker', hue = 'sex', palette = 'Dark2', 
+                  data = insurance[(insurance['age'] <= 18)], ax = ax[0]).set_title('Count of Smoker for Age <=18 by Sex')
+
+sns.countplot(x = 'smoker', hue = 'sex', palette = 'Dark2', 
+                  data = insurance[(insurance['age'] > 18)], ax = ax[1]).set_title('Count of Smoker for Age >18 by Sex')

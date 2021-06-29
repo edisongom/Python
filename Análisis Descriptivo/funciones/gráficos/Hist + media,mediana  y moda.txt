@@ -1,0 +1,16 @@
+# Age
+age_mean=insurance["age"].mean()
+age_median=insurance["age"].median()
+age_mode=insurance["age"].mode()
+
+
+fig, ax_hist = plt.subplots(figsize = (12.8, 6))
+ax_hist = sns.distplot(insurance['age'])
+
+ax_hist.axvline(age_mean, color = 'r', linestyle = '--', label = 'Mean')
+ax_hist.axvline(age_median, color = 'g', linestyle = '-', label = 'Median')
+ax_hist.axvline(age_mode[0], color = 'b', linestyle = '-', label = 'Mode')
+ax_hist.set_title('3Ms y Distribución de Age')
+
+plt.legend(); 
+plt.show()

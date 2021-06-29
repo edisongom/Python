@@ -1,0 +1,10 @@
+# Distribution of charges for smokers category
+fig = plt.figure(figsize=(12.8, 6))
+
+ax = fig.add_subplot(121)
+sns.distplot(insurance[(insurance['smoker'] == 1)]['charges'], color = 'c', 
+             ax = ax).set_title('Distribution of charges for smokers')
+
+ax= fig.add_subplot(122)
+sns.distplot(insurance[(insurance['smoker'] == 0)]['charges'], color = 'b', 
+             ax = ax).set_title('Distribution of charges for non-smokers')
