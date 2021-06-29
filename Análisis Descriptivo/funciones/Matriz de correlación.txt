@@ -1,0 +1,22 @@
+# Correlation matrix for all variables
+corr = bank.drop('Personal Loan', axis = 1).corr()
+
+mask = np.zeros_like(corr, dtype = np.bool)
+mask[np.triu_indices_from(mask)] = True
+
+f, ax = plt.subplots(figsize = (11, 9))
+
+cmap = sns.diverging_palette(220, 10, as_cmap = True)
+
+sns.heatmap(corr, mask = mask, cmap = cmap, vmax = 1, center = 0, square = True, 
+            linewidths = .5, cbar_kws = {"shrink": .5}, annot = True)
+ax.set_title('Correlation Matrix of Data')
+
+
+
+
+# Filter for correlation value greater than 0.5
+sort = corr.abs().unstack()
+sort = sort.sort_values(kind = "quicksort", ascending = False)
+sort[(sort > 0.5) & (sort < 1)]
+

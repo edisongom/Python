@@ -1,0 +1,17 @@
+smokers = np.array(insurance[insurance['smoker'] == 'yes']['charges'])
+non_smokers = np.array(insurance[insurance['smoker'] == 'no']['charges'])
+
+print('Mean of Charges for Smokers: {}'.format(smokers.mean().round(2)))
+print('Mean of Charges for Non-smokers: {}\n'.format(non_smokers.mean().round(2)))
+
+#performing an independent T-test
+t, p_value = stats.ttest_ind(smokers, non_smokers, axis = 0)
+if p_value <0.05:
+    
+    print(f'With a p-value of {round(p_value, 4)} the difference is significant. aka |We reject the null|')
+    print('Charges differs significantly.')
+
+else:
+    
+    print(f'With a p-value of {round(p_value, 4)} the difference is not significant. aka |We fail to reject the null|')
+    print("Charges don't differ significantly.")
