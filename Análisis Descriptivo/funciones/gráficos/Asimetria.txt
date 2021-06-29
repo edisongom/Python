@@ -1,0 +1,20 @@
+# coeficinte de asimetria para 'age'
+print("Skewness of 'Age': {}\n".format(insurance['age'].skew().round(3)))
+
+
+# Ajustanto una distribución normal 
+h = np.asarray(insurance['age'])
+h = sorted(h)
+fit = stats.norm.pdf(h, np.mean(h), np.std(h)) 
+ 
+fig, ax_hist = plt.subplots(figsize = (12.8, 6))
+plt.plot(h, fit, '-', linewidth = 2, color = 'goldenrod', label = 'Normal distribution')
+plt.hist(h, density = True, color = 'lightsteelblue', label = 'Actual distribution')
+
+ax_hist.axvline(age_mean, color = 'r', linestyle = '--', label = 'Mean')
+ax_hist.axvline(age_median, color = 'g', linestyle = '-', label = 'Median')
+ax_hist.axvline(age_mode[0], color = 'b', linestyle = '-', label = 'Mode')
+ax_hist.set_title('Ajuste Normal Distribution y verificando asimetria de Age')
+
+plt.legend(); plt.show()
+

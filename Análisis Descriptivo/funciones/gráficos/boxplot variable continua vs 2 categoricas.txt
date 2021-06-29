@@ -1,0 +1,7 @@
+
+fig = plt.figure(figsize = (12.8, 6))
+
+ax = sns.boxplot(x = 'smoker', y = 'charges', hue = 'sex', palette = 'Accent', data = insurance)
+ax = sns.stripplot(x = 'smoker', y = 'charges', hue = 'sex', palette = 'Accent', data = insurance, 
+              jitter = True, dodge = True, linewidth = 0.5)
+ax.set_title('Distribution of Charges for Male and Female by Smoker and Non-smokers')

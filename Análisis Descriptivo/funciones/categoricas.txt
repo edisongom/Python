@@ -1,0 +1,8 @@
+#Convertir children a categorica
+insurance['children'] = pd.Categorical(insurance['children'])
+
+# Replace non-smoker with 0 and smoker with 1
+insurance['smoker'] = insurance['smoker'].replace({'no': 0, 'yes': 1})
+
+# Replace male with 1 and female with 0
+insurance['sex'] = insurance['sex'].replace({'female': 0, 'male': 1})
